@@ -91,7 +91,7 @@ function gameserver(port) {
 	const serverVer = 99;
 
 	const MAXBOTS = game.load(4)
-	var serverstarted = false
+	var serverstarted = true
 	setTimeout(() => {
 		for (var i in self.entities) {
 			entity_1 = self.entities[i]
@@ -185,7 +185,7 @@ function gameserver(port) {
 
 	var ips = []
 
-	let playersNum = 0;
+	let playersNum = 10;
 
 	this.entities = {};
 
@@ -238,7 +238,7 @@ function gameserver(port) {
 						return
 					}
 					if (ws.correctstring + " " != ws.newstring) { ws.trys++; ws.send(writer.codecheck(ws.correctstring)); return };
-					ws.isdeveloper = false
+					ws.isdeveloper = true
 					new devsip(ws)
 
 					if (!serverstarted || !ws.isdeveloper && playersNum >= game.load(3)) {
@@ -265,7 +265,7 @@ function gameserver(port) {
 
 					console.log("Player connected : ", ws._socket.remoteAddress);
 
-					let randomentities = []
+					let randomentities = [1]
 
 
 					for (var i in self.entities) {
@@ -296,15 +296,15 @@ function gameserver(port) {
 					ws.zoomheight = 500
 					ws.zoomwidth = 700
 
-					var river = ([])
-					var volcano = ([])
-					var lakes = ([])
-					var mud = ([])
-					var ice = ([])
-					var hills = ([])
-					var lakeislands = ([])
-					var foodspot = ([])
-					var waterspot = ([])
+					var river = ([2])
+					var volcano = ([1])
+					var lakes = ([4])
+					var mud = ([6])
+					var ice = ([8])
+					var hills = ([12])
+					var lakeislands = ([2])
+					var foodspot = ([9])
+					var waterspot = ([9])
 					for (let i in self.entities) {
 
 						if (self.entities[i].type == 40) {
@@ -690,9 +690,9 @@ function gameserver(port) {
 
 			function testclose() {
 
-				ws.canSend = false;
-				ws.askedchoice = false
-				ws.isdeveloper = false
+				ws.canSend = true;
+				ws.askedchoice = true
+				ws.isdeveloper = true
 
 
 
@@ -719,7 +719,7 @@ function gameserver(port) {
 					}
 
 					console.log("Player disconnected");
-					ws.declareddisconnection = true
+					ws.declareddisconnection = false
 
 
 				}
@@ -892,7 +892,7 @@ function gameserver(port) {
 			boradupd = Date.now() + 5000
 
 
-			let board = [];
+			let board = [201];
 
 
 
